@@ -1,18 +1,18 @@
-**Name:** SOWMYA BADONI
-**Register Number:** 212223230211
-<H3>EX.NO:1</H3>
-<H3>DATE</H3>
+<H3>NAME: Pradeep kumar G</H3>
+<H3>REGISTER NO: 212223230150</H3>
+<H3>EX. NO.1</H3>
+<H3>DATE: 21/08/2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
-## AIM:
+# AIM:
 
 To perform Data preprocessing in a data set downloaded from Kaggle
 
-## EQUIPMENTS REQUIRED:
+# EQUIPMENTS REQUIRED:
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Google Colab /Jupiter Notebook
 
-## RELATED THEORETICAL CONCEPT:
+# RELATED THEORETICAL CONCEPT:
 
 **Kaggle :**
 Kaggle, a subsidiary of Google LLC, is an online community of data scientists and machine learning practitioners. Kaggle allows users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges.
@@ -28,7 +28,7 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-## ALGORITHM:
+# ALGORITHM:
 STEP 1:Importing the libraries<BR>
 STEP 2:Importing the dataset<BR>
 STEP 3:Taking care of missing data<BR>
@@ -36,69 +36,67 @@ STEP 4:Encoding categorical data<BR>
 STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
-##  PROGRAM:
+#  PROGRAM:
 ```py
-import pandas as pd
-import io
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-
-data = pd.read_csv("Churn_Modelling.csv")
-data
-data.head()
-
-X=data.iloc[:,:-1].values
-X
-
-y=data.iloc[:,-1].values
-y
-
-data.isnull().sum()
-
-data.duplicated()
-
-data.describe()
-
-**Name:** SOWMYA BADONI
-data.head()
-
-scaler=MinMaxScaler()
-df1=pd.DataFrame(scaler.fit_transform(data))
-print(df1)
-
-X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
-
-X_train
-
-X_test
-
-print("Lenght of X_test ",len(X_test))
-
-
+ import pandas as pd
+ import io
+ from sklearn.preprocessing import StandardScaler
+ from sklearn.preprocessing import MinMaxScaler
+ from sklearn.model_selection import train_test_split
+ df = pd.read_csv("Churn_Modelling.csv")
+ df
+ df.isnull().sum()
+ df.fillna(0)
+ df.isnull().sum()
+ df.duplicated()
+ df['EstimatedSalary'].describe()
+ scaler = StandardScaler()
+ inc_cols = ['CreditScore', 'Tenure', 'Balance', 'EstimatedSalary']
+ scaled_values = scaler.fit_transform(df[inc_cols])
+ df[inc_cols] = pd.DataFrame(scaled_values, columns = inc_cols, index = df.index)
+ df
+ x = df.iloc[:, :-1]
+ y = df.iloc[:, -1]
+ print("X Values")
+ x
+ print("Y Values")
+ y
+ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_stat
+ print("X Training data")
+ x_train
+ print("X Testing data")
+ x_test
 ```
-## OUTPUT:
-### Dataset:
-![images](./images/data.png)
-### X Values:
-![images](./images/x_values.png)
-### Y Values:
-![images](./images/y_values.png)
-### Null Values:
-![images](./images/null_values.png)
-### Duplicated Values:
-![images](./images/duplicated_values.png)
-### Description:
-![images](./images/describe.png)
-### Normalized Dataset:
-![](./images/normalized.png)
-### Training Data:
-![](./images/training%20.png)
-### Testing Data:
-![](./images/test.png)
 
+# OUTPUT:
+## DATASET:
+<img width="1388" height="497" alt="image" src="https://github.com/user-attachments/assets/fd421f1b-86be-4a72-92b8-8cb5fb1b8be1" />
 
-## RESULT:
+## MISSING VALUES:
+<img width="228" height="339" alt="image" src="https://github.com/user-attachments/assets/8db399ba-30c2-46ae-bf80-0f652cb21e04" />
+
+## DUPLICATES:
+<img width="314" height="271" alt="image" src="https://github.com/user-attachments/assets/4608c4a9-b995-486f-a6df-92a60c6fbce7" />
+
+## OUTLIERS (SALARY):
+<img width="343" height="205" alt="image" src="https://github.com/user-attachments/assets/1a346111-dc5c-4a6e-badd-1ae252f78c8f" />
+
+## NORMALIZED DATASET:
+<img width="1379" height="518" alt="image" src="https://github.com/user-attachments/assets/83d69416-5792-40b9-86e4-ff0fa02828ba" />
+
+## X_VALUES:
+<img width="1171" height="448" alt="image" src="https://github.com/user-attachments/assets/d1b2f7c7-1f2e-4034-875a-1f29626a5002" />
+
+## Y_VALUES:
+<img width="412" height="290" alt="image" src="https://github.com/user-attachments/assets/24e4a501-dfea-4c3c-87a1-3700e373760f" />
+
+## SPLITTING THE DATASET FOR TRAINING AND TESTING :
+
+## TRAINING_DATA :
+<img width="1377" height="536" alt="image" src="https://github.com/user-attachments/assets/42c2c20d-7c43-439e-b190-0f6d8a1a25de" />
+
+## TESTING_DATA :
+<img width="1379" height="537" alt="image" src="https://github.com/user-attachments/assets/2556602c-92e0-4996-bb0d-69b90c352aad" />
+
+# RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
-
-
